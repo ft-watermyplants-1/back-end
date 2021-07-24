@@ -31,4 +31,18 @@ async function findById(id) {
   return result;
 }
 
-module.exports = { findAll, findById };
+async function add(user) {
+  const [newUser] = await db("users").insert(user, [
+    "user_id",
+    "username",
+    "password",
+    "phone_number",
+  ]);
+  return newUser;
+}
+
+function update(id) {}
+
+function remove(id) {}
+
+module.exports = { findAll, findById, add, update, remove };

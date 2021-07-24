@@ -17,4 +17,12 @@ router.get("/:id", (req, res, next) => {
     .catch(next);
 });
 
+router.post("/", (req, res, next) => {
+  Users.add(req.body)
+    .then((user) => {
+      res.status(201).json(user);
+    })
+    .catch(next);
+});
+
 module.exports = router;
