@@ -10,7 +10,7 @@ exports.up = async (knex) => {
       plants.increments("plant_id");
       plants.string("nickname", 50).unique().notNullable();
       plants.string("species", 100).notNullable();
-      plants.string("water_frequency", 100).notNullable();
+      plants.integer("days_between_watering").notNullable();
       plants.text("notes", 250);
       plants.string("img_url");
       plants

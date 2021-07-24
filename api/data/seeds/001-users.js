@@ -5,9 +5,10 @@ exports.seed = function (knex) {
     .then(function () {
       // Inserts seed entries
       return knex("users").insert([
-        { id: 1, colName: "rowValue1" },
-        { id: 2, colName: "rowValue2" },
-        { id: 3, colName: "rowValue3" },
+        { username: "jeff", password: "1234", phone_number: "555-837-2847" },
+        { username: "troy", password: "foo", phone_number: "555-738-1198" },
+        { username: "abed", password: "bar", phone_number: "555-166-2367" },
+        { username: "brita", password: "baz", phone_number: "555-455-2801" },
       ]);
     });
 };
