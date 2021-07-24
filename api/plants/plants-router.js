@@ -9,4 +9,12 @@ router.get("/:user_id/plants", (req, res, next) => {
     .catch(next);
 });
 
+router.get("/:user_id/plants/:plant_id", (req, res, next) => {
+  Plants.findById(req.params.user_id, req.params.plant_id)
+    .then((plant) => {
+      res.status(200).json(plant);
+    })
+    .catch(next);
+});
+
 module.exports = router;
