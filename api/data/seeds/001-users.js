@@ -8,7 +8,7 @@ exports.seed = function (knex) {
         { username: "jeff", password: "1234", phone_number: "555-837-2847" },
         { username: "troy", password: "foo", phone_number: "555-738-1198" },
         { username: "abed", password: "bar", phone_number: "555-166-2367" },
-        { username: "brita", password: "baz", phone_number: "555-455-2801" },
+        { username: "britta", password: "baz", phone_number: "555-455-2801" },
       ]);
     });
 };
