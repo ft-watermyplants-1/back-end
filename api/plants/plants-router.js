@@ -25,4 +25,12 @@ router.post("/:user_id/plants", (req, res, next) => {
     .catch(next);
 });
 
+router.put("/:user_id/plants/:plant_id", (req, res, next) => {
+  Plants.update(req.params.user_id, req.params.plant_id, req.body)
+    .then((plant) => {
+      res.status(200).json(plant);
+    })
+    .catch(next);
+});
+
 module.exports = router;
