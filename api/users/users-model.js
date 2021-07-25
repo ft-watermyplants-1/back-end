@@ -31,6 +31,10 @@ async function findById(user_id) {
   return result;
 }
 
+function findBy(filter) {
+    return db('users').where(filter)
+}
+
 async function add(user) {
   const [newUser] = await db("users").insert(user, [
     "user_id",
@@ -55,4 +59,4 @@ async function remove(user_id) {
   return deletedUser;
 }
 
-module.exports = { findAll, findById, add, update, remove };
+module.exports = { findAll, findById, findBy add, update, remove };
