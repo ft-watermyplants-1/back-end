@@ -3,26 +3,30 @@ const Users = require("../users/users-model");
 const bcrypt = require("bcryptjs");
 const tokenBuilder = require("./token-builder");
 const {
+  checkUsernameUnique,
   checkUsernameExists,
   validateCredentials,
 } = require("./auth-middleware");
 
-router.post("/register", (req, res, next) => {
-  let user = req.body;
-  const rounds = process.env.BCRYPT_ROUNDS || 8;
-  const hash = bcrypt.hashSync(user.password, rounds);
-  user.password = hash;
+router.post(
+  "/register",
+  validateCredentials,
+  checkUsernameUnique,
+  (req, res, next) => {
+    let user = req.body;
+    const rounds = process.env.BCRYPT_ROUNDS || 8;
+    const hash = bcrypt.hashSync(user.password, rounds);
+    user.password = hash;
 
-  Users.add(user)
-    .then((saved) => {
-      res
-        .status(201)
-        .json({
-          message: `Account successfully create. Welcome ${saved.username}!`,
+    Users.add(user)
+      .then((saved) => {
+        res.status(201).json({
+          message: `Account successfully created. Welcome ${saved.username}!`,
         });
-    })
-    .catch(next);
-});
+      })
+      .catch(next);
+  }
+);
 
 router.post(
   "/login",
@@ -43,3 +47,5 @@ router.post(
     }
   }
 );
+
+module.exports = router;

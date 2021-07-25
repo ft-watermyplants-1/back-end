@@ -32,7 +32,7 @@ async function findById(user_id) {
 }
 
 function findBy(filter) {
-    return db('users').where(filter)
+  return db("users").where(filter);
 }
 
 async function add(user) {
@@ -59,4 +59,4 @@ async function remove(user_id) {
   return deletedUser;
 }
 
-module.exports = { findAll, findById, findBy add, update, remove };
+module.exports = { findAll, findById, findBy, add, update, remove };

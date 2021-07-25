@@ -1,5 +1,20 @@
 const Users = require("../users/users-model");
 
+async function checkUsernameUnique(req, res, next) {
+  try {
+    const existing = await Users.findBy({
+      username: req.body.username,
+    }).first();
+    if (existing) {
+      next({ status: 422, message: "This username is taken already." });
+    } else {
+      next();
+    }
+  } catch (err) {
+    next(err);
+  }
+}
+
 async function validateCredentials(req, res, next) {
   const { username, password } = req.body;
   if (
@@ -14,7 +29,7 @@ async function validateCredentials(req, res, next) {
       status: 422,
       message: "Username must be between 3 and 30 characters",
     });
-  } else if (password.trim().length < 6 || password.trim() > 30) {
+  } else if (password.trim().length < 6 || password.trim().length > 30) {
     next({
       status: 422,
       message: "Password must be between 6 and 30 characters",
@@ -42,4 +57,8 @@ async function checkUsernameExists(req, res, next) {
   }
 }
 
-module.exports = { validateCredentials, checkUsernameExists };
+module.exports = {
+  validateCredentials,
+  checkUsernameExists,
+  checkUsernameUnique,
+};
