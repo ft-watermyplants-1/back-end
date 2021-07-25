@@ -33,4 +33,12 @@ router.put("/:user_id/plants/:plant_id", (req, res, next) => {
     .catch(next);
 });
 
+router.delete("/:user_id/plants/:plant_id", (req, res, next) => {
+  Plants.remove(req.params.plant_id)
+    .then((plant) => {
+      res.status(200).json(plant);
+    })
+    .catch(next);
+});
+
 module.exports = router;
