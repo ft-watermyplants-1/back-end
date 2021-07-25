@@ -1,3 +1,5 @@
+const jwt = require("jsonwebtoken");
+const { JWT_SECRET } = require("../secrets/index");
 const Users = require("../users/users-model");
 
 async function checkUsernameUnique(req, res, next) {
@@ -23,16 +25,16 @@ async function validateCredentials(req, res, next) {
     !password ||
     password.trim() === ""
   ) {
-    next({ status: 422, message: "Username and password required" });
+    next({ status: 422, message: "Username and password required." });
   } else if (username.trim().length < 3 || username.trim() > 30) {
     next({
       status: 422,
-      message: "Username must be between 3 and 30 characters",
+      message: "Username must be between 3 and 30 characters.",
     });
   } else if (password.trim().length < 6 || password.trim().length > 30) {
     next({
       status: 422,
-      message: "Password must be between 6 and 30 characters",
+      message: "Password must be between 6 and 30 characters.",
     });
   } else {
     req.body.username = username.trim();
@@ -47,7 +49,7 @@ async function checkUsernameExists(req, res, next) {
       username: req.body.username,
     }).first();
     if (!existing) {
-      next({ status: 404, message: "User not found" });
+      next({ status: 404, message: "User not found." });
     } else {
       req.validUser = existing;
       next();
@@ -57,8 +59,23 @@ async function checkUsernameExists(req, res, next) {
   }
 }
 
+function restricted(req, res, next) {
+  const token = req.headers.authorization;
+  if (!token) {
+    return next({ status: 401, message: "Token required." });
+  }
+  jwt.verify(token, JWT_SECRET, (err, decodedToken) => {
+    if (err) {
+      return next({ status: 401, message: "Invalid token." });
+    }
+    req.decodedToken = decodedToken;
+    next();
+  });
+}
+
 module.exports = {
   validateCredentials,
   checkUsernameExists,
   checkUsernameUnique,
+  restricted,
 };
