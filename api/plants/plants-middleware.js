@@ -2,7 +2,10 @@ const Plants = require("./plants-model");
 
 async function checkPlantExists(req, res, next) {
   try {
-    const existing = await Plants.findById(req.params.plant_id);
+    const existing = await Plants.findById(
+      req.params.user_id,
+      req.params.plant_id
+    );
     if (!existing) {
       next({ status: 404, message: "No plant found with that ID." });
     } else {
@@ -19,9 +22,18 @@ function validatePlantPayload(req, res, next) {
     next({ status: 422, message: "Nickname and species required." });
   } else if (!days_between_watering) {
     next({ status: 422, message: "Watering schedule required." });
+  } else if (typeof days_between_watering !== "number") {
+    next({ status: 422, message: "Days between watering must be a number" });
+  } else if (days_between_watering < 1) {
+    next({ status: 422, message: "Days between watering must be at least 1" });
+  } else {
+    req.body.nickname = nickname.trim();
+    req.body.species = species.trim();
+    next();
   }
 }
 
 module.exports = {
   checkPlantExists,
+  validatePlantPayload,
 };
