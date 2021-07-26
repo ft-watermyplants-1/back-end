@@ -4,15 +4,15 @@
 
 ## Dummy Login Info
 
-<section>
-<description>Usernames/Passwords</description>
+<details>
+<summary>Usernames/Passwords</summary>
 ```json
         { username: "jeff", password: password },
         { username: "troy", password: password },
         { username: "abed", password: password },
         { username: "britta", password: password },
 ```
-</section>
+</details>
 
 ## <p align="center">---------- REGISTER / LOGIN ----------</p>
 
