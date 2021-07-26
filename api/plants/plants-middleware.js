@@ -20,7 +20,7 @@ function validatePlantPayload(req, res, next) {
   const { nickname, species, days_between_watering } = req.body;
   if (!nickname || nickname.trim() === 0 || !species || species.trim() === 0) {
     next({ status: 422, message: "Nickname and species required." });
-  } else if (!days_between_watering) {
+  } else if (days_between_watering === undefined) {
     next({ status: 422, message: "Watering schedule required." });
   } else if (typeof days_between_watering !== "number") {
     next({ status: 422, message: "Days between watering must be a number" });
