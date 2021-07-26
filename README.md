@@ -57,3 +57,122 @@ _What you receive:_
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0Ijo1LCJ1c2VybmFtZSI6Ik5ld1VzZXIiLCJpYXQiOjE2MjcyNjY4MDYsImV4cCI6MTYyNzM1MzIwNn0.J1dFd3ghUPYVTodsaAU3Bg2RRcmYM_1oOe-96nvLLUg"
 }
 ```
+
+## <p align="center">---------- USERS ----------</p>
+
+### [GET] /api/users/
+
+**_RESTRICTED ENDPOINT_**
+
+- Get an array of users
+  - _requires valid token in header to access_
+
+_What you receive:_
+
+```json
+[
+  {
+    "user_id": 1,
+    "username": "jeff",
+    "phone_number": "555-837-2847"
+  },
+  {
+    "user_id": 2,
+    "username": "troy",
+    "phone_number": "555-738-1198"
+  },
+  {
+    "user_id": 3,
+    "username": "abed",
+    "phone_number": "555-166-2367"
+  },
+  {
+    "user_id": 4,
+    "username": "britta",
+    "phone_number": "555-455-2801"
+  },
+  {
+    "user_id": 5,
+    "username": "NewUser",
+    "phone_number": "555-555-5555"
+  }
+]
+```
+
+### [GET] /api/users/:user_id
+
+**_RESTRICTED ENDPOINT_**
+
+- Get information on a specific user
+  - _requires valid token in header to access_
+
+_What you receive:_
+
+```json
+{
+  "user_id": 1,
+  "username": "jeff",
+  "phone_number": "555-837-2847",
+  "plants": [
+    {
+      "plant_id": 1,
+      "nickname": "Bob",
+      "species": "Sunflower",
+      "days_between_watering": 1,
+      "notes": "Make sure to use clear water",
+      "img_url": null
+    },
+    {
+      "plant_id": 2,
+      "nickname": "Rufus",
+      "species": "Petunia",
+      "days_between_watering": 3,
+      "notes": null,
+      "img_url": null
+    }
+  ]
+}
+```
+
+### [PUT] /api/users/:user_id
+
+**_RESTRICTED ENDPOINT_**
+
+- Update an existing user
+  - _requires valid token in header to access_
+  - _can be used to update username or phone number_
+
+_What you send:_
+
+```json
+{
+  "username": "UpdatedUser",
+  "phone_number": "555-555-6666"
+}
+```
+
+_What you receive:_
+
+```json
+{
+  "user_id": 5,
+  "username": "UpdatedUser",
+  "phone_number": "555-555-6666"
+}
+```
+
+### [DELETE] /api/users/:user_id
+
+**_RESTRICTED ENDPOINT_**
+
+- Delete an existing user
+  - _requires valid token in header to access_
+
+_What you receive:_
+
+```json
+{
+  "user_id": 6,
+  "username": "DeletedUser"
+}
+```

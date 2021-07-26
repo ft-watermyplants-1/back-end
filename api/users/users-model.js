@@ -1,7 +1,9 @@
 const db = require("../data/db-config");
 
 function findAll() {
-  return db("users").orderBy("user_id", "asc");
+  return db("users")
+    .select("user_id", "username", "phone_number")
+    .orderBy("user_id", "asc");
 }
 
 async function findById(user_id) {
@@ -12,7 +14,6 @@ async function findById(user_id) {
   const result = {
     user_id: rows[0].user_id,
     username: rows[0].username,
-    password: rows[0].password,
     phone_number: rows[0].phone_number,
     plants: [],
   };
@@ -39,7 +40,6 @@ async function add(user) {
   const [newUser] = await db("users").insert(user, [
     "user_id",
     "username",
-    "password",
     "phone_number",
   ]);
   return newUser;
@@ -47,14 +47,14 @@ async function add(user) {
 
 async function update(user_id, user) {
   const [updatedUser] = await db("users")
-    .update(user, ["user_id", "username", "password", "phone_number"])
+    .update(user, ["user_id", "username", "phone_number"])
     .where("user_id", user_id);
   return updatedUser;
 }
 
 async function remove(user_id) {
   const [deletedUser] = await db("users")
-    .del(["user_id", "username", "password", "phone_number"])
+    .del(["user_id", "username"])
     .where("user_id", user_id);
   return deletedUser;
 }
