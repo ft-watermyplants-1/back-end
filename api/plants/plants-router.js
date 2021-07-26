@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const Plants = require("./plants-model");
+const { checkUserExists } = require("../users/users-middleware");
 const {
-  checkUserExists,
   checkPlantExists,
   validatePlantPayload,
 } = require("./plants-middleware");
