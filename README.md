@@ -67,7 +67,7 @@ _What you receive:_
 **_RESTRICTED ENDPOINT_**
 
 - Get an array of users
-  - _requires valid token in header to access_
+  - _requires valid token in authorization header to access_
 
 _What you receive:_
 
@@ -106,7 +106,7 @@ _What you receive:_
 **_RESTRICTED ENDPOINT_**
 
 - Get information on a specific user
-  - _requires valid token in header to access_
+  - _requires valid token in authorization header to access_
 
 _What you receive:_
 
@@ -141,7 +141,7 @@ _What you receive:_
 **_RESTRICTED ENDPOINT_**
 
 - Update an existing user
-  - _requires valid token in header to access_
+  - _requires valid token in authorization header to send_
   - _can be used to update username or phone number_
 
 _What you send:_
@@ -168,7 +168,7 @@ _What you receive:_
 **_RESTRICTED ENDPOINT_**
 
 - Delete an existing user
-  - _requires valid token in header to access_
+  - _requires valid token in authorization header to delete_
 
 _What you receive:_
 
@@ -179,6 +179,8 @@ _What you receive:_
 }
 ```
 
+##
+
 ## <p align="center">---------- PLANTS ----------</p>
 
 ### [GET] /api/users/:user_id/plants
@@ -186,7 +188,7 @@ _What you receive:_
 **_RESTRICTED ENDPOINT_**
 
 - Get an array of plants for a specific user
-  - _requires valid token in header to access_
+  - _requires valid token in authorization header to access_
 
 _What you receive:_
 
@@ -211,4 +213,66 @@ _What you receive:_
     "user_id": 1
   }
 ]
+```
+
+### [GET] /api/users/:user_id/plants/:plant_id
+
+**_RESTRICTED ENDPOINT_**
+
+- Get information for a specific plant
+  - _requires valid token in authorization header to access_
+
+_What you receive:_
+
+```json
+{
+  "plant_id": 1,
+  "nickname": "Bob",
+  "species": "Sunflower",
+  "days_between_watering": 1,
+  "notes": "Make sure to use clear water",
+  "img_url": null,
+  "user_id": 1
+}
+```
+
+### [POST] /api/users/:user_id/plants/:plant_id
+
+**_RESTRICTED ENDPOINT_**
+
+- Add a new plant for a user
+  - _requires valid token in authorization header to send_
+  - _required information:_
+    - _nickname (string)_
+    - _species (string)_
+    - _days_between_watering (number)_
+    - _user_id (number; corresponds to id for existing user)_
+  - _optional information:_
+    - _notes (string)_
+    - _img_url (string)_
+
+_What you send:_
+
+```json
+{
+  "nickname": "Ted",
+  "species": "Daffodil",
+  "days_between_watering": 3,
+  "notes": "Optional notes",
+  "user_id": 1
+}
+```
+
+_What you receive:_
+
+```json
+{
+  "plant_id": 8,
+  "nickname": "Ted",
+  "species": "Daffodil",
+  "days_between_watering": 3,
+  "notes": "Optional notes",
+  "img_url": null,
+  "user_id": 1
+}
 ```
