@@ -11,6 +11,10 @@ async function findById(user_id) {
     .join("plants as p", "u.user_id", "p.user_id")
     .where("u.user_id", user_id);
 
+  if (rows.length === 0) {
+    return undefined;
+  }
+
   const result = {
     user_id: rows[0].user_id,
     username: rows[0].username,
