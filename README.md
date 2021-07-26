@@ -107,7 +107,7 @@ _What you receive:_
 
 - Get information on a specific user
   - _requires valid token in authorization header to access_
-  - _(example uses "1" for :user_id in URL)_
+  - _(example uses "1" for **:user_id** in URL)_
 
 _What you receive:_
 
@@ -144,7 +144,7 @@ _What you receive:_
 - Update an existing user
   - _requires valid token in authorization header to send_
   - _can be used to update username or phone number_
-  - _(example uses "5" for :user_id in URL)_
+  - _(example uses "5" for **:user_id** in URL)_
 
 _What you send:_
 
@@ -171,7 +171,7 @@ _What you receive:_
 
 - Delete an existing user
   - _requires valid token in authorization header to delete_
-  - _(example uses "6" for :user_id in URL)_
+  - _(example uses "6" for **:user_id** in URL)_
 
 _What you receive:_
 
@@ -192,7 +192,7 @@ _What you receive:_
 
 - Get an array of plants for a specific user
   - _requires valid token in authorization header to access_
-  - _(example uses "1" for :user_id in URL)_
+  - _(example uses "1" for **:user_id** in URL)_
 
 _What you receive:_
 
@@ -225,7 +225,7 @@ _What you receive:_
 
 - Get information for a specific plant
   - _requires valid token in authorization header to access_
-  - _(example uses "1" for :user_id and "1" for :plant_id in URL)_
+  - _(example uses "1" for **:user_id** and "1" for **:plant_id** in URL)_
 
 _What you receive:_
 
@@ -247,7 +247,7 @@ _What you receive:_
 
 - Add a new plant for a user
   - _requires valid token in authorization header to send_
-  - _(example uses "1" for :user_id in URL)_
+  - _(example uses "1" for **:user_id** in URL)_
   - _required information:_
     - _nickname (string)_
     - _species (string)_
@@ -288,7 +288,7 @@ _What you receive:_
 
 - Update an existing plant
   - _requires valid token in authorization header to send_
-  - _(example uses "1" for :user_id and "8" for :plant_id in URL)_
+  - _(example uses "1" for **:user_id** and "8" for **:plant_id** in URL)_
 
 _What you send:_
 
@@ -320,7 +320,7 @@ _What you receive:_
 
 - Delete a plant
   - _requires valid token in authorization header to delete_
-  - _(example uses "1" for :user_id in URL)_
+  - _(example uses "1" for **:user_id** in URL)_
 
 _What you receive:_
 
