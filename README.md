@@ -2,7 +2,7 @@
 
 ## https://ft-watermyplants-1.herokuapp.com/
 
-## ---------- REGISTER / LOGIN ----------
+## <h2 align="center">---------- REGISTER / LOGIN ----------</h2>>
 
 ### [POST] /api/auth/register
 
