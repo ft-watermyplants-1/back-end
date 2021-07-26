@@ -58,6 +58,8 @@ _What you receive:_
 }
 ```
 
+##
+
 ## <p align="center">---------- USERS ----------</p>
 
 ### [GET] /api/users/
@@ -175,4 +177,38 @@ _What you receive:_
   "user_id": 6,
   "username": "DeletedUser"
 }
+```
+
+## <p align="center">---------- PLANTS ----------</p>
+
+### [GET] /api/users/:user_id/plants
+
+**_RESTRICTED ENDPOINT_**
+
+- Get an array of plants for a specific user
+  - _requires valid token in header to access_
+
+_What you receive:_
+
+```json
+[
+  {
+    "plant_id": 1,
+    "nickname": "Bob",
+    "species": "Sunflower",
+    "days_between_watering": 1,
+    "notes": "Make sure to use clear water",
+    "img_url": null,
+    "user_id": 1
+  },
+  {
+    "plant_id": 2,
+    "nickname": "Rufus",
+    "species": "Petunia",
+    "days_between_watering": 3,
+    "notes": null,
+    "img_url": null,
+    "user_id": 1
+  }
+]
 ```
