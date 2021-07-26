@@ -8,6 +8,7 @@
 
 <details>
 <summary>Usernames/Passwords</summary>
+
 ```json
 [
   {
@@ -32,6 +33,7 @@
   }
 ]
 ```
+
 </details>
 
 ### [POST] /api/auth/register
