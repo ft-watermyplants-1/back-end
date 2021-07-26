@@ -2,11 +2,11 @@
 
 ## https://ft-watermyplants-1.herokuapp.com/
 
-## <h2 align="center">---------- REGISTER / LOGIN ----------</h2>>
+## <p align="center">---------- REGISTER / LOGIN ----------</p>>
 
 ### [POST] /api/auth/register
 
-Register a new user
+-Register a new user
 
 _What you send:_
 
