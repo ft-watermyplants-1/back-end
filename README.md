@@ -2,19 +2,37 @@
 
 ## <p align="center">https://ft-watermyplants-1.herokuapp.com</p>
 
+## <p align="center">---------- REGISTER / LOGIN ----------</p>
+
 ## Dummy Login Info
 
 <details>
 <summary>Usernames/Passwords</summary>
 ```json
-        { username: "jeff", password: password },
-        { username: "troy", password: password },
-        { username: "abed", password: password },
-        { username: "britta", password: password },
+[
+  {
+    "user_id": 1,
+    "username": "jeff",
+    "password": "password"
+  },
+  {
+    "user_id": 2,
+    "username": "troy",
+    "password": "password"
+  },
+  {
+    "user_id": 3,
+    "username": "abed",
+    "password": "password"
+  },
+  {
+    "user_id": 4,
+    "username": "britta",
+    "password": "password"
+  }
+]
 ```
 </details>
-
-## <p align="center">---------- REGISTER / LOGIN ----------</p>
 
 ### [POST] /api/auth/register
 
