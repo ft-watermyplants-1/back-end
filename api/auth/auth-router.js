@@ -19,9 +19,14 @@ router.post(
     user.password = hash;
 
     Users.add(user)
-      .then((saved) => {
+      .then((newUser) => {
         res.status(201).json({
-          message: `Account successfully created. Welcome ${saved.username}!`,
+          message: `Account successfully created. Welcome ${newUser.username}!`,
+          newUser: {
+            user_id: newUser.user_id,
+            username: newUser.username,
+            phone_number: newUser.phone_number,
+          },
         });
       })
       .catch(next);
