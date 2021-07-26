@@ -236,7 +236,7 @@ _What you receive:_
 }
 ```
 
-### [POST] /api/users/:user_id/plants/:plant_id
+### [POST] /api/users/:user_id/plants/
 
 **_RESTRICTED ENDPOINT_**
 
@@ -273,6 +273,55 @@ _What you receive:_
   "days_between_watering": 3,
   "notes": "Optional notes",
   "img_url": null,
+  "user_id": 1
+}
+```
+
+### [PUT] /api/users/:user_id/plants/:plant_id
+
+**_RESTRICTED ENDPOINT_**
+
+- Update an existing plant
+  - _requires valid token in authorization header to send_
+
+_What you send:_
+
+```json
+{
+  "nickname": "Updated Plant Nickname!!!",
+  "species": "Updated species!!!",
+  "days_between_watering": 6
+}
+```
+
+_What you receive:_
+
+```json
+{
+  "plant_id": 8,
+  "nickname": "Updated Plant Nickname!!!",
+  "species": "Updated species!!!",
+  "days_between_watering": 6,
+  "notes": "Optional notes",
+  "img_url": null,
+  "user_id": 1
+}
+```
+
+### [DELETE] /api/users/:user_id/plants/:plant_id
+
+**_RESTRICTED ENDPOINT_**
+
+- Delete a plant
+  - _requires valid token in authorization header to delete_
+
+_What you receive:_
+
+```json
+{
+  "plant_id": 1,
+  "nickname": "Bob",
+  "species": "Sunflower",
   "user_id": 1
 }
 ```

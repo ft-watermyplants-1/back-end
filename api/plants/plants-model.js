@@ -61,15 +61,7 @@ async function update(user_id, plant_id, plant) {
 
 async function remove(plant_id) {
   const [removedPlant] = await db("plants")
-    .del([
-      "plant_id",
-      "nickname",
-      "species",
-      "days_between_watering",
-      "notes",
-      "img_url",
-      "user_id",
-    ])
+    .del(["plant_id", "nickname", "species", "user_id"])
     .where("plant_id", plant_id);
   return removedPlant;
 }
