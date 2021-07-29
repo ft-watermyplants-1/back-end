@@ -321,6 +321,13 @@ _What you receive:_
 - Update an existing plant
   - _requires valid token in authorization header to send_
   - _(example uses "1" for **:user_id** and "8" for **:plant_id** in URL)_
+  - _required information:_
+    - _nickname (string)_
+    - _species (string)_
+    - _days_between_watering (number)_
+  - _optional information:_
+    - _notes (string)_
+    - _img_url (string)_
 
 _What you send:_
 
