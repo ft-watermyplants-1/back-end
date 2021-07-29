@@ -3,7 +3,7 @@ const Plants = require("./plants-model");
 async function checkPlantExists(req, res, next) {
   try {
     const existing = await Plants.findById(
-      req.params.user_id,
+      req.decodedToken.subject,
       req.params.plant_id
     );
     if (!existing) {

@@ -19,7 +19,7 @@ router.get("/:user_id", checkUserExists, (req, res, next) => {
 });
 
 router.put("/:user_id", checkUserExists, checkUserPayload, (req, res, next) => {
-  Users.update(req.params.user_id, req.body)
+  Users.update(req.decodedToken.subject, req.body)
     .then((user) => {
       res.status(200).json(user);
     })
@@ -27,7 +27,7 @@ router.put("/:user_id", checkUserExists, checkUserPayload, (req, res, next) => {
 });
 
 router.delete("/:user_id", checkUserExists, (req, res, next) => {
-  Users.remove(req.params.user_id)
+  Users.remove(req.decodedToken.subject)
     .then((user) => {
       res.status(200).json(user);
     })
