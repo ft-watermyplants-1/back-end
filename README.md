@@ -218,7 +218,7 @@ _What you receive:_
 
 ## <p align="center">---------- PLANTS ----------</p>
 
-### [GET] /api/users/:user_id/plants
+### [GET] /api/plants
 
 **_RESTRICTED ENDPOINT_**
 
@@ -251,7 +251,7 @@ _What you receive:_
 ]
 ```
 
-### [GET] /api/users/:user_id/plants/:plant_id
+### [GET] /api/plants/:plant_id
 
 **_RESTRICTED ENDPOINT_**
 
@@ -273,7 +273,7 @@ _What you receive:_
 }
 ```
 
-### [POST] /api/users/:user_id/plants/
+### [POST] /api/plants/
 
 **_RESTRICTED ENDPOINT_**
 
@@ -314,7 +314,7 @@ _What you receive:_
 }
 ```
 
-### [PUT] /api/users/:user_id/plants/:plant_id
+### [PUT] /api/plants/:plant_id
 
 **_RESTRICTED ENDPOINT_**
 
@@ -353,7 +353,7 @@ _What you receive:_
 }
 ```
 
-### [DELETE] /api/users/:user_id/plants/:plant_id
+### [DELETE] /api/plants/:plant_id
 
 **_RESTRICTED ENDPOINT_**
 

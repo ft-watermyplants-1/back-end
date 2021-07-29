@@ -6,7 +6,7 @@ const {
   validatePlantPayload,
 } = require("./plants-middleware");
 
-router.get("/:user_id/plants", checkUserExists, (req, res, next) => {
+router.get("/", checkUserExists, (req, res, next) => {
   Plants.findAll(req.decodedToken.subject)
     .then((plants) => {
       res.status(200).json(plants);
@@ -15,7 +15,7 @@ router.get("/:user_id/plants", checkUserExists, (req, res, next) => {
 });
 
 router.get(
-  "/:user_id/plants/:plant_id",
+  "/:plant_id",
   checkUserExists,
   checkPlantExists,
   (req, res, next) => {
@@ -27,21 +27,16 @@ router.get(
   }
 );
 
-router.post(
-  "/:user_id/plants",
-  checkUserExists,
-  validatePlantPayload,
-  (req, res, next) => {
-    Plants.add(req.decodedToken.subject, req.body)
-      .then((plant) => {
-        res.status(201).json(plant);
-      })
-      .catch(next);
-  }
-);
+router.post("/", checkUserExists, validatePlantPayload, (req, res, next) => {
+  Plants.add(req.decodedToken.subject, req.body)
+    .then((plant) => {
+      res.status(201).json(plant);
+    })
+    .catch(next);
+});
 
 router.put(
-  "/:user_id/plants/:plant_id",
+  "/:plant_id",
   checkUserExists,
   checkPlantExists,
   validatePlantPayload,
@@ -55,7 +50,7 @@ router.put(
 );
 
 router.delete(
-  "/:user_id/plants/:plant_id",
+  "/:plant_id",
   checkUserExists,
   checkPlantExists,
   (req, res, next) => {
