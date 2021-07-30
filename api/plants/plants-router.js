@@ -22,24 +22,18 @@ router.get("/:plant_id", checkPlantExists, (req, res, next) => {
     .catch(next);
 });
 
-router.post(
-  "/",
-  validatePlantPayload,
-  checkPlantNicknameUnique,
-  (req, res, next) => {
-    Plants.add(req.decodedToken.subject, req.body)
-      .then((plant) => {
-        res.status(201).json(plant);
-      })
-      .catch(next);
-  }
-);
+router.post("/", validatePlantPayload, (req, res, next) => {
+  Plants.add(req.decodedToken.subject, req.body)
+    .then((plant) => {
+      res.status(201).json(plant);
+    })
+    .catch(next);
+});
 
 router.put(
   "/:plant_id",
   checkPlantExists,
   validatePlantPayload,
-  checkPlantNicknameUnique,
   (req, res, next) => {
     Plants.update(req.decodedToken.subject, req.params.plant_id, req.body)
       .then((plant) => {
