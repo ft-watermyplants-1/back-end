@@ -16,6 +16,21 @@ async function checkPlantExists(req, res, next) {
   }
 }
 
+async function checkPlantNicknameUnique(req, res, next) {
+  try {
+    const existing = await Plants.findBy(req.decodedToken.subject, {
+      nickname: req.body.nickname,
+    }).first();
+    if (existing) {
+      next({ status: 422, message: "This nickname is taken already." });
+    } else {
+      next();
+    }
+  } catch (err) {
+    next(err);
+  }
+}
+
 function validatePlantPayload(req, res, next) {
   const { nickname, species, days_between_watering } = req.body;
   if (!nickname || nickname.trim() === 0 || !species || species.trim() === 0) {
@@ -35,5 +50,6 @@ function validatePlantPayload(req, res, next) {
 
 module.exports = {
   checkPlantExists,
+  checkPlantNicknameUnique,
   validatePlantPayload,
 };

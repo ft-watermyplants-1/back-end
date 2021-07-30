@@ -8,7 +8,7 @@ exports.up = async (knex) => {
     })
     .createTable("plants", (plants) => {
       plants.increments("plant_id");
-      plants.string("nickname", 50).unique().notNullable();
+      plants.string("nickname", 50).notNullable();
       plants.string("species", 100).notNullable();
       plants.integer("days_between_watering").notNullable();
       plants.text("notes", 250);
