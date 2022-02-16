@@ -13,7 +13,7 @@ router.get("/", (req, res, next) => {
 router.get("/:user_id", checkUserExists, (req, res, next) => {
   Users.findById(req.params.user_id)
     .then((user) => {
-      res.status(200).json(user);,
+      res.status(200).json(user);
     })
     .catch(next);
 });

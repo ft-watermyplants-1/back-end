@@ -15,6 +15,12 @@ exports.seed = function (knex) {
           password: hash,
           email: "fake@email.com",
         },
+        {
+          first_name: "test2",
+          last_name: "account2",
+          password: hash,
+          email: "fake2@email.com",
+        },
       ]);
     });
 };

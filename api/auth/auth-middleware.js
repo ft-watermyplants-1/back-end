@@ -23,10 +23,10 @@ async function checkEmailUnique(req, res, next) {
 async function validateCredentials(req, res, next) {
   const { first_name, last_name, email, password } = req.body;
   if (
-    !first_name ||
-    first_name.trim() === "" ||
-    !last_name ||
-    last_name.trim() === "" ||
+    // !first_name ||
+    // first_name.trim() === "" ||
+    // !last_name ||
+    // last_name.trim() === "" ||
     !email ||
     email.trim() === "" ||
     !password ||
@@ -44,8 +44,8 @@ async function validateCredentials(req, res, next) {
       message: "Password must be between 6 and 30 characters.",
     });
   } else {
-    req.body.first_name = first_name.trim();
-    req.body.last_name = last_name.trim();
+    // req.body.first_name = first_name.trim();
+    // req.body.last_name = last_name.trim();
     req.body.email = email.trim();
     req.body.password = password.trim();
     next();

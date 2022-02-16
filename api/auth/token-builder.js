@@ -4,7 +4,7 @@ const { JWT_SECRET } = require("../secrets/index");
 module.exports = function (user) {
   const payload = {
     subject: user.user_id,
-    first_name: user.first_name,
+    email: user.email,
   };
   const options = {
     expiresIn: "1d",

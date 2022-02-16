@@ -44,13 +44,14 @@ router.post(
         const token = tokenBuilder(req.validUser);
         res.status(200).json({
           user_id: req.validUser.user_id,
-          message: `Welcome back ${req.validUser.first_name}`,
+          message: `Welcome back!`,
           token,
         });
       } else {
         next({ status: 401, message: "Invalid credentials" });
       }
     } catch (err) {
+      console.log("here");
       next(err);
     }
   }

@@ -23,13 +23,13 @@ exports.seed = function (knex) {
           species: "Orchid",
           days_between_watering: 7,
           notes: "Try gatorade. It's got electrolytes.",
-          user_id: 2,
+          user_id: 1,
         },
         {
           nickname: "Frederick",
           species: "Rose",
           days_between_watering: 1,
-          user_id: 3,
+          user_id: 1,
         },
         {
           nickname: "Sam",
@@ -41,7 +41,7 @@ exports.seed = function (knex) {
           nickname: "Sally",
           species: "Carnation",
           days_between_watering: 2,
-          user_id: 4,
+          user_id: 2,
         },
         {
           nickname: "Broomhilda",
@@ -49,7 +49,7 @@ exports.seed = function (knex) {
           days_between_watering: 3,
           img_url:
             "https://fyf.tac-cdn.net/images/products/large/P-149.jpg?auto=webp&quality=60&width=690",
-          user_id: 4,
+          user_id: 2,
         },
       ]);
     });
