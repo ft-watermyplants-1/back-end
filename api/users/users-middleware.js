@@ -13,17 +13,17 @@ async function checkUserExists(req, res, next) {
   }
 }
 
-function checkUserPayload(req, res, next) {
-  const { username, phone_number } = req.body;
-  if (!username || username.trim().length < 3 || username.trim() > 30) {
-    next({
-      status: 422,
-      message: "Username must be between 3 and 30 characters.",
-    });
-  } else {
-    req.body.username = username.trim();
-    next();
-  }
-}
+// function checkUserPayload(req, res, next) {
+//   const { username, phone_number } = req.body;
+//   if (!username || username.trim().length < 3 || username.trim() > 30) {
+//     next({
+//       status: 422,
+//       message: "Username must be between 3 and 30 characters.",
+//     });
+//   } else {
+//     req.body.username = username.trim();
+//     next();
+//   }
+// }
 
-module.exports = { checkUserExists, checkUserPayload };
+module.exports = { checkUserExists };
