@@ -9,10 +9,12 @@ exports.seed = function (knex) {
     .then(function () {
       // Inserts seed entries
       return knex("users").insert([
-        { username: "jeff", password: hash, phone_number: "555-837-2847" },
-        { username: "troy", password: hash, phone_number: "555-738-1198" },
-        { username: "abed", password: hash, phone_number: "555-166-2367" },
-        { username: "britta", password: hash, phone_number: "555-455-2801" },
+        {
+          first_name: "test",
+          last_name: "account",
+          password: hash,
+          email: "fake@email.com",
+        },
       ]);
     });
 };
