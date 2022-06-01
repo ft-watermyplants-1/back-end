@@ -34,27 +34,22 @@ router.post(
   }
 );
 
-router.post(
-  "/login",
-  validateCredentials,
-  checkEmailExists,
-  (req, res, next) => {
-    try {
-      if (bcrypt.compareSync(req.body.password, req.validUser.password)) {
-        const token = tokenBuilder(req.validUser);
-        res.status(200).json({
-          user_id: req.validUser.user_id,
-          message: `Welcome back!`,
-          token,
-        });
-      } else {
-        next({ status: 401, message: "Invalid credentials" });
-      }
-    } catch (err) {
-      console.log("here");
-      next(err);
+router.post("/login", checkEmailExists, (req, res, next) => {
+  try {
+    if (bcrypt.compareSync(req.body.password, req.validUser.password)) {
+      const token = tokenBuilder(req.validUser);
+      res.status(200).json({
+        user_id: req.validUser.user_id,
+        message: `Welcome back!`,
+        token,
+      });
+    } else {
+      next({ status: 401, message: "Invalid credentials" });
     }
+  } catch (err) {
+    console.log("here");
+    next(err);
   }
-);
+});
 
 module.exports = router;

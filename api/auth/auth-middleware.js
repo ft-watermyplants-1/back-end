@@ -23,31 +23,27 @@ async function checkEmailUnique(req, res, next) {
 async function validateCredentials(req, res, next) {
   const { first_name, last_name, email, password } = req.body;
   if (
-    // !first_name ||
-    // first_name.trim() === "" ||
-    // !last_name ||
-    // last_name.trim() === "" ||
+    !first_name ||
+    first_name.trim() === "" ||
+    !last_name ||
+    last_name.trim() === "" ||
     !email ||
     email.trim() === "" ||
     !password ||
     password.trim() === ""
   ) {
     next({ status: 422, message: "Name, email, and password required." });
-    //   } else if (username.trim().length < 3 || username.trim() > 30) {
-    //     next({
-    //       status: 422,
-    //       message: "Username must be between 3 and 30 characters.",
-    //     });
   } else if (password.trim().length < 6 || password.trim().length > 30) {
     next({
       status: 422,
       message: "Password must be between 6 and 30 characters.",
     });
   } else {
-    // req.body.first_name = first_name.trim();
-    // req.body.last_name = last_name.trim();
+    req.body.first_name = first_name.trim();
+    req.body.last_name = last_name.trim();
     req.body.email = email.trim();
     req.body.password = password.trim();
+    console.log(req.body);
     next();
   }
 }
