@@ -43,7 +43,6 @@ async function validateCredentials(req, res, next) {
     req.body.last_name = last_name.trim();
     req.body.email = email.trim();
     req.body.password = password.trim();
-    console.log(req.body);
     next();
   }
 }

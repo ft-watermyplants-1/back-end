@@ -8,10 +8,10 @@
     "rollback": "knex migrate:rollback",
     "seed": "knex seed:run",
     "resetdb": "npm run rollback && npm run migrate && npm run seed",
-    "migrateh": "heroku run knex migrate:latest -a ft-watermyplants-1",
     "rollbackh": "heroku run knex migrate:rollback -a ft-watermyplants-1",
-    "databaseh": "heroku pg:psql -a ft-watermyplants-1",
+    "migrateh": "heroku run knex migrate:latest -a ft-watermyplants-1",
     "seedh": "heroku run knex seed:run -a ft-watermyplants-1",
+    "databaseh": "heroku pg:psql -a ft-watermyplants-1",
     "test": "cross-env NODE_ENV=testing jest --watchAll --verbose --runInBand",
     "deploy": "git push heroku main"
   },
