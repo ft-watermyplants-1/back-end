@@ -2,16 +2,8 @@ const router = require("express").Router();
 const Users = require("./users-model");
 const { checkUserExists } = require("./users-middleware");
 
-router.get("/", (req, res, next) => {
-  Users.findAll()
-    .then((users) => {
-      res.status(200).json(users);
-    })
-    .catch(next);
-});
-
 router.get("/:user_id", checkUserExists, (req, res, next) => {
-  Users.findById(req.params.user_id)
+  Users.findById(req.decodedToken.subject)
     .then((user) => {
       res.status(200).json(user);
     })
