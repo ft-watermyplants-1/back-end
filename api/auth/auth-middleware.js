@@ -72,7 +72,7 @@ function restricted(req, res, next) {
     if (err) {
       return next({ status: 401, message: "Invalid token." });
     }
-    req.decodedToken = decodedToken;
+    req.locals.decodedToken = decodedToken;
     next();
   });
 }
