@@ -21,17 +21,15 @@
 ### [POST] /api/auth/register
 
 - Register a new user
-  - _username required (must be between 3 and 30 characters)_
+  - _email required (must be between 3 and 30 characters)_
   - _password required (must be between 6 and 30 characters)_
-  - _phone number required_
 
 _What you send:_
 
 ```json
 {
-  "username": "SampleUser",
-  "password": "abc123",
-  "phone_number": "555-555-5555"
+  "email": "SampleUser",
+  "password": "abc123"
 }
 ```
 
@@ -39,11 +37,12 @@ _What you receive:_
 
 ```json
 {
-  "message": "Account successfully created. Welcome NewUser!",
+  "message": "Account successfully created. Welcome SampleUser!",
   "newUser": {
     "user_id": 5,
-    "username": "SampleUser",
-    "phone_number": "555-555-5555"
+    "first_name": "SampleUser",
+    "last_name": "FakeName",
+    "email": "sampleuser@fake.com"
   }
 }
 ```
@@ -58,7 +57,7 @@ _What you send:_
 
 ```json
 {
-  "username": "SampleUser",
+  "email": "sampleuser@fake.com",
   "password": "abc123"
 }
 ```
@@ -76,45 +75,6 @@ _What you receive:_
 
 ## <p align="center">---------- USERS ----------</p>
 
-### [GET] /api/users/
-
-**_RESTRICTED ENDPOINT_**
-
-- Get an array of users
-  - _requires valid token in authorization header to access_
-
-_What you receive:_
-
-```json
-[
-  {
-    "user_id": 1,
-    "username": "jeff",
-    "phone_number": "555-837-2847"
-  },
-  {
-    "user_id": 2,
-    "username": "troy",
-    "phone_number": "555-738-1198"
-  },
-  {
-    "user_id": 3,
-    "username": "abed",
-    "phone_number": "555-166-2367"
-  },
-  {
-    "user_id": 4,
-    "username": "britta",
-    "phone_number": "555-455-2801"
-  },
-  {
-    "user_id": 5,
-    "username": "NewUser",
-    "phone_number": "555-555-5555"
-  }
-]
-```
-
 ### [GET] /api/users/:user_id
 
 **_RESTRICTED ENDPOINT_**
@@ -128,8 +88,9 @@ _What you receive:_
 ```json
 {
   "user_id": 1,
-  "username": "jeff",
-  "phone_number": "555-837-2847",
+  "first_name": "test",
+  "last_name": "account",
+  "email": "fake@email.com",
   "plants": [
     {
       "plant_id": 1,
@@ -164,8 +125,9 @@ _What you send:_
 
 ```json
 {
-  "username": "UpdatedUser",
-  "phone_number": "555-555-6666"
+  "first_name": "updated",
+  "last_name": "user",
+  "email": "updated@email.com"
 }
 ```
 
@@ -174,8 +136,9 @@ _What you receive:_
 ```json
 {
   "user_id": 5,
-  "username": "UpdatedUser",
-  "phone_number": "555-555-6666"
+  "first_name": "updated",
+  "last_name": "user",
+  "email": "updated@email.com"
 }
 ```
 
@@ -192,7 +155,9 @@ _What you receive:_
 ```json
 {
   "user_id": 6,
-  "username": "DeletedUser"
+  "first_name": "deleted",
+  "last_name": "user",
+  "email": "deleted@email.com"
 }
 ```
 
