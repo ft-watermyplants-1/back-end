@@ -3,7 +3,7 @@ const Plants = require("./plants-model");
 async function checkPlantExists(req, res, next) {
   try {
     const existing = await Plants.findById(
-      req.locals.decodedToken.subject,
+      res.locals.decodedToken.subject,
       req.params.plant_id
     );
     if (!existing) {
@@ -18,7 +18,7 @@ async function checkPlantExists(req, res, next) {
 
 async function checkPlantNicknameUnique(req, res, next) {
   try {
-    const existing = await Plants.findBy(req.locals.decodedToken.subject, {
+    const existing = await Plants.findBy(res.locals.decodedToken.subject, {
       nickname: req.body.nickname,
     }).first();
     if (existing) {

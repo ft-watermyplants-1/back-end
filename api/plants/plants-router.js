@@ -7,7 +7,7 @@ const {
 } = require("./plants-middleware");
 
 router.get("/", (req, res, next) => {
-  Plants.findAll(req.locals.decodedToken.subject)
+  Plants.findAll(res.locals.decodedToken.subject)
     .then((plants) => {
       res.status(200).json(plants);
     })
@@ -15,7 +15,7 @@ router.get("/", (req, res, next) => {
 });
 
 router.get("/:plant_id", checkPlantExists, (req, res, next) => {
-  Plants.findById(req.locals.decodedToken.subject, req.params.plant_id)
+  Plants.findById(res.locals.decodedToken.subject, req.params.plant_id)
     .then((plant) => {
       res.status(200).json(plant);
     })
@@ -27,7 +27,7 @@ router.post(
   validatePlantPayload,
   checkPlantNicknameUnique,
   (req, res, next) => {
-    Plants.add(req.locals.decodedToken.subject, req.body)
+    Plants.add(res.locals.decodedToken.subject, req.body)
       .then((plant) => {
         res.status(201).json(plant);
       })
@@ -41,7 +41,7 @@ router.put(
   validatePlantPayload,
   (req, res, next) => {
     Plants.update(
-      req.locals.decodedToken.subject,
+      res.locals.decodedToken.subject,
       req.params.plant_id,
       req.body
     )

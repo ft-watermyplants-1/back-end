@@ -3,7 +3,7 @@ const Users = require("./users-model");
 const { checkUserExists } = require("./users-middleware");
 
 router.get("/:user_id", checkUserExists, (req, res, next) => {
-  Users.findById(req.locals.decodedToken.subject)
+  Users.findById(res.locals.decodedToken.subject)
     .then((user) => {
       res.status(200).json(user);
     })
@@ -11,7 +11,7 @@ router.get("/:user_id", checkUserExists, (req, res, next) => {
 });
 
 router.put("/:user_id", checkUserExists, (req, res, next) => {
-  Users.update(req.locals.decodedToken.subject, req.body)
+  Users.update(res.locals.decodedToken.subject, req.body)
     .then((user) => {
       res.status(200).json(user);
     })
@@ -19,7 +19,7 @@ router.put("/:user_id", checkUserExists, (req, res, next) => {
 });
 
 router.delete("/:user_id", checkUserExists, (req, res, next) => {
-  Users.remove(req.locals.decodedToken.subject)
+  Users.remove(res.locals.decodedToken.subject)
     .then((user) => {
       res.status(200).json(user);
     })
