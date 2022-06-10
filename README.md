@@ -10,28 +10,10 @@
 <summary>Usernames/Passwords</summary>
 
 ```json
-[
-  {
-    "user_id": 1,
-    "username": "jeff",
-    "password": "password"
-  },
-  {
-    "user_id": 2,
-    "username": "troy",
-    "password": "password"
-  },
-  {
-    "user_id": 3,
-    "username": "abed",
-    "password": "password"
-  },
-  {
-    "user_id": 4,
-    "username": "britta",
-    "password": "password"
-  }
-]
+{
+  "email": "fake@email.com",
+  "password": "password"
+}
 ```
 
 </details>
